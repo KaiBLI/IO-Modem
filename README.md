@@ -1,6 +1,6 @@
 # NOTICE
 This was forked by KaiBLI with the intention of adding inbound calling support. 
-This support is not currently present nor tested. Which this changes, this notice will be updated.
+This support is not currently present nor tested. When this changes, this notice will be updated.
 
 # IO-Modem
 Connect to dialup modems over VoIP using SIP, no modem hardware required.
