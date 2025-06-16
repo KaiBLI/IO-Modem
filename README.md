@@ -1,7 +1,7 @@
 # IO-Modem
 Connect to dialup modems over VoIP using SIP, no modem hardware required.
 
-https://www.aon.com/cyber-solutions/aon_cyber_labs/introducing-IO-Modem-a-software-sip-modem/
+https://www.aon.com/cyber-solutions/aon_cyber_labs/introducing-D-Modem-a-software-sip-modem/
 
 ## Changes made in this fork
 None yet!
