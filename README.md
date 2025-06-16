@@ -1,11 +1,11 @@
-# D-Modem
+# IO-Modem
 Connect to dialup modems over VoIP using SIP, no modem hardware required.
 
-https://www.aon.com/cyber-solutions/aon_cyber_labs/introducing-d-modem-a-software-sip-modem/
+https://www.aon.com/cyber-solutions/aon_cyber_labs/introducing-IO-Modem-a-software-sip-modem/
 
 ## Changes in this fork
 
- - Increased data rates up to full 56k (tested with Cisco 2951 with PVDM2 digital modems and clock synced to GPS using [icE1usb](https://osmocom.org/projects/e1-t1-adapter/wiki/IcE1usb) at the other end, direct SIP between D-Modem and Cisco)
+ - Increased data rates up to full 56k (tested with Cisco 2951 with PVDM2 digital modems and clock synced to GPS using [icE1usb](https://osmocom.org/projects/e1-t1-adapter/wiki/IcE1usb) at the other end, direct SIP between IO-Modem and Cisco)
  - Highly improved connection stability (connections lasting days instead of minutes)
  - Audio output of modem tones using the PJSIP audio output
  - Anonymous calls without credentials
@@ -20,23 +20,23 @@ You'll need Linux and a working 32-bit development environment (gcc -m32 needs t
 ## How it Works
 Traditional “controller-based” modems generally used a microcontroller and a DSP to handle all aspects of modem communication on the device itself.  Later, so-called “Winmodems” were introduced that allowed for field-programmable DSPs and moved the controller and other functionality into software running on the host PC.  This was followed by “pure software” modems that moved DSP functionality to the host as well.  The physical hardware of these softmodems was only used to connect to the phone network, and all processing was done in software. 
 
-D-Modem replaces a softmodem’s physical hardware with a SIP stack.  Instead of passing audio to and from the software DSP over an analog phone line, audio travels via the RTP (or SRTP) media streams of a SIP VoIP call.   
+IO-Modem replaces a softmodem’s physical hardware with a SIP stack.  Instead of passing audio to and from the software DSP over an analog phone line, audio travels via the RTP (or SRTP) media streams of a SIP VoIP call.   
 
 ## Usage
 The repository contains two applications: 
 
 slmodemd – A stripped down and patched version of Debian’s sl-modem-daemon package.  All kernel driver code has been replaced with socket-based communication, allowing external applications to manage audio streams. 
 
-d-modem – External application that interfaces with slmodemd to manage SIP calls and their associated audio streams.
+IO-Modem – External application that interfaces with slmodemd to manage SIP calls and their associated audio streams.
 
 socat.sh - Script that invokes Socat, connecting 2 modems together and transferring data between them via TCP relay (see [Testing](#testing)).
 
 After they have been built, you can configure SIP account information in the SIP_LOGIN environment variable for calls over a SIP proxy:
 
     # export SIP_LOGIN=username:password@sip.example.com
-Next, run slmodemd, passing the path to d-modem in the -e option.  Use -d<level> for debug logging. 
+Next, run slmodemd, passing the path to IO-Modem in the -e option.  Use -d<level> for debug logging. 
 
-    # ./slmodemd/slmodemd -d9 -e ./d-modem
+    # ./slmodemd/slmodemd -d9 -e ./IO-Modem
     SmartLink Soft Modem: version 2.9.11 Oct 28 2021 16:51:30 
     symbolic link `/dev/ttySL0' -> `/dev/pts/3' created. 
     modem `slamr0' created. TTY is `/dev/pts/3' 
@@ -115,7 +115,7 @@ To stop data transmission, first escape from on-line mode (+++), then hang up:
 ## Known Issues / Future Work
 - Additional logging/error handling is needed 
 - The serial interface could be replaced with stdio or a socket, and common AT configuration options could be exposed as command line options 
-- There is currently no support for receiving calls in d-modem.
+- There is currently no support for receiving calls in IO-Modem.
 
 
 Copyright 2021 Aon plc
