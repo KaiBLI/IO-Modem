@@ -3,7 +3,12 @@ Connect to dialup modems over VoIP using SIP, no modem hardware required.
 
 https://www.aon.com/cyber-solutions/aon_cyber_labs/introducing-IO-Modem-a-software-sip-modem/
 
-## Changes in this fork
+## Changes made in this fork
+None yet!
+But this fork is primarly here to examine and hopefully implement inbound calling support.
+This will hopefully allow the modem to receive calls over VoIP for BBS's and Internet support. The benefit of this is that retro-computing enthusiasts can set up many of these software-based modems to support inbound connections without needing physical hardware. 
+
+## Forked from Stargo's Fork - Here's the changes Stargo Made
 
  - Increased data rates up to full 56k (tested with Cisco 2951 with PVDM2 digital modems and clock synced to GPS using [icE1usb](https://osmocom.org/projects/e1-t1-adapter/wiki/IcE1usb) at the other end, direct SIP between IO-Modem and Cisco)
  - Highly improved connection stability (connections lasting days instead of minutes)
